@@ -49,7 +49,7 @@ RSpec.describe 'Food', type: :feature do
   end
   describe 'DELETE #destroy' do
     it 'deletes a food' do
-      food = Food.create(name: 'Test Food', measurement_unit: 'Unit', price: 10, quantity: 5, user: user)
+      Food.create(name: 'Test Food', measurement_unit: 'Unit', price: 10, quantity: 5, user:)
       visit food_index_path
       click_link 'Delete'
       expect(page).to have_content('The food has been deleted successfully')
