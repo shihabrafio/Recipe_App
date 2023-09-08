@@ -1,4 +1,4 @@
-<%= form_with model: @new_food , url: food_index_path, class: "new-food" do |f| %>
+<%= form_with(model: @new_food, url: food_index_path, class: "new-food") do |f| %>
   <h1>Add a New Food</h1>
   <div class="field">
     <%= f.label :name %>
@@ -16,8 +16,10 @@
     <%= f.label :quantity %>
     <%= f.number_field :quantity %>
   </div>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <div class="field">
-    <%= f.submit 'Add Food', class: "buttn" %>
-  </div>
+    <div class="field">
+      <%= f.submit 'Add Food', class: "buttn" %>
+    </div>
+  <% if current_user %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  <% end %>
 <% end %>
