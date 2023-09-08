@@ -9,9 +9,9 @@ class FoodController < ApplicationController
 
   def create
     @new_food = Food.new(food_params)
-
+    @new_food = current_user.foods.new(food_params)
     return unless @new_food.save
-
+    flash[:success] = 'The food has been added successfully'
     redirect_to food_index_path
   end
 
