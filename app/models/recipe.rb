@@ -2,6 +2,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :recipe_foods
   has_many :foods, through: :recipe_foods
+  validates_presence_of :name
   def missing_foods
     data = { list: [], count: 0, total_price: 0 }
     recipe_foods.each do |recipe_food|

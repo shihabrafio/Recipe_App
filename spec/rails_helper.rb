@@ -37,7 +37,6 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
@@ -55,7 +54,9 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://rspec.info/features/6-0/rspec-rails
   config.infer_spec_type_from_file_location!
+  config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :feature
   config.before(:each, type: :controller) do
     @request.env['devise.mapping'] = Devise.mappings[:user]
   end
