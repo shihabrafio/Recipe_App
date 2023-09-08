@@ -23,5 +23,4 @@ RSpec.describe Recipe, type: :model do
     expect(association.macro).to eq :has_many
     expect(association.options[:through]).to eq :recipe_foods
   end
-
 end
