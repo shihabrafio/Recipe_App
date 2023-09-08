@@ -30,7 +30,7 @@ RSpec.describe Recipe, type: :model do
     # Create some food items
     food1 = Food.create(name: 'Ingredient 1', price: 5, quantity: 10)
     food2 = Food.create(name: 'Ingredient 2', price: 3, quantity: 2)
-    food3 = Food.create(name: 'Ingredient 3', price: 2, quantity: 7)
+    Food.create(name: 'Ingredient 3', price: 2, quantity: 7)
 
     # Create RecipeFood records associated with the recipe
     recipe.recipe_foods.create(food: food1, quantity: 3)
