@@ -56,6 +56,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :feature
   config.before(:each, type: :controller) do
     @request.env['devise.mapping'] = Devise.mappings[:user]
   end
