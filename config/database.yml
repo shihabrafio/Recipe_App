@@ -23,16 +23,13 @@ default: &default
 
 development:
   <<: *default
-  database: recipe_development
-  username: postgres
-  password: R@fi0123
-  host: localhost
+  database: recipe_development1234
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: helloworld
+  #username: ROR_Blog_app
 
   # The password associated with the postgres role (username).
   #password:
@@ -60,10 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: recipe_test
-  username: postgres
-  password: R@fi0123
-  host: localhost
+  database:  recipe_test1234
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -87,7 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: recipe_production
-  username: postgres
-  password: R@fi0123
-  host: localhost
+  database: recipe_production1234
+  username: ROR_Blog_app
+  password: <%= ENV["ROR_BLOG_APP_DATABASE_PASSWORD"] %>
