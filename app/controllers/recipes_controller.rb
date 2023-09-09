@@ -84,7 +84,6 @@ class RecipesController < ApplicationController
 
     render 'shopping-list/index', locals: { total_food_items:, total_price: }
   end
-  # rubocop:enable Metrics
 
   private
 
