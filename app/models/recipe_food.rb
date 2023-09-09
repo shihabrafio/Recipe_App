@@ -1,6 +1,4 @@
 class RecipeFood < ApplicationRecord
-  belongs_to :recipe
-  belongs_to :food
-
-  validates :quantity, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  belongs_to :food, foreign_key: :food_id
+  belongs_to :recipe, foreign_key: :recipe_id
 end

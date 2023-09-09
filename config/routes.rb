@@ -1,17 +1,30 @@
 Rails.application.routes.draw do
-  devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
 
-  root "food#index"
+  devise_for :users
 
-  resources :food, only: [:index, :new, :create, :destroy]
-  resources :general_shopping_list, only: [:index]
-  resources :recipes, only: [:index, :show, :new, :create, :destroy] do
-    resources :recipe_food, only: [:new, :create]
+  devise_scope :user do
+    authenticated :user do
+      root to: 'foods#index', as: :authenticated_root
+    end
+
+    unauthenticated :user do
+      root to: 'devise/sessions#new', as: :unauthenticated_root
+    end
   end
-  resources :recipe_food, only: [:destroy]
-  resources :public_recipes, only: [:index]
+
+  root 'foods#index'
+
+  match 'recipes/:recipe_id' => 'recipes#toggle_public', as: :toggle_public, via: :patch
+  match 'public_recipes' => 'public_recipes#index', as: :public_recipes, via: :get
+  match 'general_shopping_list' => 'recipes#general_shopping_list', as: :general_shopping_list, via: :get
+
+  resources :foods
+
+  resources :recipes, only: %i[index show new create destroy put update] do
+    resources :recipe_foods, path: 'food', only: %i[destroy modify new create]
+  end
 end

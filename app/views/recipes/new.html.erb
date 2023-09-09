@@ -1,30 +1,44 @@
-<%= form_with model: @new_recipe, url: recipes_path, class: "new-recipe" do |f| %>
-    <h1>Add a New Recipe</h1>
+<%= render "shared/nav", user: @user %>
 
-    <div class="field">
-        <%= f.label :name %>
-        <%= f.text_field :name %>
+<div class="container">
+
+  <%= form_with model: @recipe, url: recipes_path, method: :post, local: true, scope: :recipe do |form| %>
+    <h1 class="header">Add Your Recipe!</h1>
+    <div>
+      <div>
+        <%= form.text_field :name,
+                        placeholder: "Name",
+                        class: "form-field devise-input recipe-input" %>
+      </div>
+
+      <div>
+        <%= form.number_field :preparation_time,
+                          min: 0,
+                          placeholder: "Preparation time (mins)",
+                          class: "form-field devise-input recipe-input" %>
+      </div>
+
+      <div>
+        <%= form.number_field :cooking_time,
+                          min: 0,
+                          placeholder: "Cooking time (mins)",
+                          class: "form-field devise-input recipe-input" %>
+      </div>
+
+      <div>
+        <%= form.text_area :description,
+                       placeholder: "Description",
+                       rows: 5,
+                       class: "form-field devise-input" %>
+      </div>
+
+      <div>
+        <%= form.label :public %>
+        <%= form.check_box :public %>
+      </div>
+
+      <%= form.submit "Add Recipe", class: "submit foods-add-button" %>
+
     </div>
-    <div class="field">
-        <%= f.label :preparation_time %>
-        <%= f.number_field :preparation_time %>
-    </div>
-    <div class="field">
-        <%= f.label :cooking_time %>
-        <%= f.number_field :cooking_time %>
-    </div>
-    <div class="field">
-        <%= f.label :description %>
-        <%= f.text_area :description %>
-    </div>
-    <div class="field">
-        <%= f.label :public %>
-        <%= f.check_box :public %>
-    </div>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <div class="field">
-        <%= f.submit 'Add Recipe', class: "buttn" %>
-    </div>
-    <% end %>
-    
-    <span class="msg error"><%= flash[:error] %></span>
+  <% end %>
+</div>
