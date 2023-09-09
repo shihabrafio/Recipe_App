@@ -1,6 +1,7 @@
 <%= render "shared/nav", user: @user %>
 <section class="container">
   <%= form_for @food, url: foods_path, local: true, data: { turbo: false }, method: :post do |form| %>
+
     <% if @food.errors.any? %>
       <div class="alert alert-danger">
         <ul>
@@ -39,6 +40,14 @@
                           autocomplete: "off",
                           placeholder: "Price" %>
       </div>
+
+      <%# <div class="mb-3">
+        <%= form.number_field :quantity,
+                          min: 1,
+                          class: "form-control devise-input",
+                          autocomplete: "off",
+                          placeholder: "Quantity"
+      </div> %>
     </div>
 
     <div class="cancel-link">

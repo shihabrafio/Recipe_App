@@ -75,6 +75,7 @@ GEM
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    cancancan (3.5.0)
     capybara (3.39.2)
       addressable
       matrix
@@ -98,11 +99,7 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
     erubi (1.12.0)
-    factory_bot (6.2.1)
-      activesupport (>= 5.0.0)
-    factory_bot_rails (6.2.0)
-      factory_bot (~> 6.2.0)
-      railties (>= 5.0.0)
+    ffi (1.15.5)
     globalid (1.2.0)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -118,10 +115,6 @@ GEM
       activesupport (>= 5.0.0)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
-    launchy (2.5.2)
-      addressable (~> 2.8)
-    letter_opener (1.8.1)
-      launchy (>= 2.2, < 3)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -178,10 +171,6 @@ GEM
       activesupport (= 7.0.7.2)
       bundler (>= 1.15.0)
       railties (= 7.0.7.2)
-    rails-controller-testing (1.0.5)
-      actionpack (>= 5.0.1.rc1)
-      actionview (>= 5.0.1.rc1)
-      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -213,14 +202,14 @@ GEM
     rspec-mocks (3.12.6)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-rails (6.0.3)
-      actionpack (>= 6.1)
-      activesupport (>= 6.1)
-      railties (>= 6.1)
-      rspec-core (~> 3.12)
-      rspec-expectations (~> 3.12)
-      rspec-mocks (~> 3.12)
-      rspec-support (~> 3.12)
+    rspec-rails (5.1.2)
+      actionpack (>= 5.2)
+      activesupport (>= 5.2)
+      railties (>= 5.2)
+      rspec-core (~> 3.10)
+      rspec-expectations (~> 3.10)
+      rspec-mocks (~> 3.10)
+      rspec-support (~> 3.10)
     rspec-support (3.12.1)
     rubocop (1.56.2)
       base64 (~> 0.1.1)
@@ -286,20 +275,19 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap
+  cancancan (~> 3.4)
   capybara
   debug
-  devise (~> 4.9)
-  factory_bot_rails
+  devise
+  ffi (~> 1.15, >= 1.15.5)
   importmap-rails
   jbuilder
-  letter_opener
-  nokogiri (~> 1.15)
   pg (~> 1.1)
   puma (~> 5.0)
-  rails (~> 7.0.7)
-  rails-controller-testing
-  rspec-rails (~> 6.0, >= 6.0.3)
+  rails (~> 7.0.4)
+  rspec-rails (~> 5.1, >= 5.1.2)
   rubocop (>= 1.0, < 2.0)
   selenium-webdriver
   sprockets-rails

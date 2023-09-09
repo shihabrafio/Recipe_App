@@ -57,6 +57,7 @@
           method: :get,
           class: "foods-add-button" %>
         <% end %>
+
         <% if @recipe.user == @current_user %>
           <%= button_to "Add Ingredients",
           new_recipe_recipe_food_path(@recipe.id),
