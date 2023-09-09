@@ -5,14 +5,15 @@
     <th>Actions</th>
   </tr>
   <% @recipes.each do |recipe| %>
-
+    
     <tr>
-      <td><%= link_to recipe.name, recipe_path(recipe.id) %></td>
+    <td><%= link_to recipe.name, recipe_path(recipe.id) %></td>
       <td><%= recipe.description %></td>
-
-
+      
+      
       <td><%= button_to "Delete", recipe_path(recipe.id), method: :delete %></td>
     </tr>
   <% end %>
 </table>
 <span class="msg success"><%= flash[:success] %></span>
+
