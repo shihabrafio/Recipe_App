@@ -9,10 +9,15 @@ class FoodController < ApplicationController
 
   def create
     @new_food = Food.new(food_params)
-
+    if @new_food.save
+      flash[:success] = 'Food added successfully'
+      redirect_to food_index_path
+    else
+      flash[:error] = 'Food not added'
+      render :new
+    end
     return unless @new_food.save
 
-    redirect_to food_index_path
   end
 
   def destroy
