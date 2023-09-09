@@ -17,6 +17,7 @@ body {
 .alert {
   background-color: #f2dede;
   color: #a94442;
+  margin: 4px;
 }
 
 .notice {
